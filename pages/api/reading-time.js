@@ -11,8 +11,8 @@ export default async (req, res) => {
   }
 
   let words_per_minute = 200
-  if (req.query.word_per_minutes) {
-    words_per_minute = number(req.query.word_per_minutes)
+  if (req.query.words_per_minute) {
+    words_per_minute = number(req.query.words_per_minute)
   }
 
   const wasm = await import("reading-time-estimator-ng");
