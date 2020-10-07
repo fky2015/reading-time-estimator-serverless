@@ -10,16 +10,16 @@ export default async (req, res) => {
     text = req.cookies.text;
   }
 
-  let word_per_minutes = 200
+  let words_per_minute = 200
   if (req.query.word_per_minutes) {
-    word_per_minutes = number(req.query.word_per_minutes)
+    words_per_minute = number(req.query.word_per_minutes)
   }
 
   const wasm = await import("reading-time-estimator-ng");
   res.statusCode = 200;
   const [words, characters, cjk, whitespaces] = wasm.greet(text);
 
-  const minutes = words / word_per_minutes
+  const minutes = words / words_per_minute
 
   res.json({ words, characters, cjk, whitespaces, minutes });
 };
